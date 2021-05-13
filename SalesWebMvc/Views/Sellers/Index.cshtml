@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Seller>
+
+@{
+    ViewData["Title"] = "Sellers";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped table-hover"> @*cria tabela para exibição de dados invocando classe css do bootstrap*@
+    <thead> @*cabeçalho da tabela*@
+        <tr class="success"> @*linha do cabeçalho da tabela*@
+            <th> @*coluna da tabela*@
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @*coluna da tabela*@
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @*coluna da tabela*@
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @*coluna da tabela*@
+                @Html.DisplayNameFor(model => model.BaseSalary)
+            </th>
+            <th> @*cria mais um espaço de coluna para abrigar os links para editar ou deletar os dados*@
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>   @*corpo da tabela (dados)*@
+        @foreach(var item in Model)
+        {
+        <tr>
+            @*linha do dado*@
+            <td>
+                @*coluna do dado*@
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @*coluna do dado*@
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @*coluna do dado*@
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @*coluna do dado*@
+                @Html.DisplayFor(modelItem => item.BaseSalary)
+            </td>
+            <td> @*links para modificar dados*@
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
